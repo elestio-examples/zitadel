@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  zitadel:
+    restart: always
+    image: ghcr.io/zitadel/zitadel:latest
+    command: 'start-from-init --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode disabled'
+    environment:
+      - 'ZITADEL_DATABASE_COCKROACH_HOST=crdb'
+      - 'ZITADEL_EXTERNALSECURE=false'
+    depends_on:
+      - crdb
+    ports:
+      - '172.17.0.1:8586:8080'
+
+  crdb:
+    restart: always
+    image: 'cockroachdb/cockroach:v22.2.2'
+    command: 'start-single-node --insecure'
+    ports:
+      - '172.17.0.1:9090:8080'
+      - '172.17.0.1:26257:26257'
