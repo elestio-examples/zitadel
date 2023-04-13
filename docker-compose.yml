@@ -4,10 +4,14 @@ services:
   zitadel:
     restart: always
     image: ghcr.io/zitadel/zitadel:latest
-    command: 'start-from-init --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode disabled'
+    command: 'start-from-init --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external'
     environment:
       - 'ZITADEL_DATABASE_COCKROACH_HOST=crdb'
-      - 'ZITADEL_EXTERNALSECURE=false'
+      - 'ZITADEL_EXTERNALSECURE=true'
+      - 'ZITADEL_EXTERNALDOMAIN=${DOMAIN}'
+      - 'ZITADEL_EXTERNALPORT=443'
+      # - 'ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME=root'
+      # - 'ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD=Test1234#'
     depends_on:
       - crdb
     ports:
@@ -20,3 +24,5 @@ services:
     ports:
       - '172.17.0.1:9090:8080'
       - '172.17.0.1:26257:26257'
+    volumes:
+      - './data:/cockroach/cockroach-data:rw'

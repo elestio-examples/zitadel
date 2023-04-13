@@ -7,13 +7,29 @@ ports:
     public: true
     path: "/"
     isAuth: false
+  - protocol: "HTTPS"
+    targetProtocol: "HTTP"
+    listeningPort: "444"
+    targetPort: "9090"
+    targetIP: "172.17.0.1"
+    public: true
+    path: "/"
+    isAuth: false
+  - protocol: "HTTPS"
+    targetProtocol: "HTTP"
+    listeningPort: "445"
+    targetPort: "26257"
+    targetIP: "172.17.0.1"
+    public: true
+    path: "/"
+    isAuth: false
 environments:
   - key: "ADMIN_PASSWORD"
     value: "random_password"
   - key: "ADMIN_EMAIL"
     value: "[EMAIL]"
-  - key: "BASE_URL"
-    value: "https://[CI_CD_DOMAIN]"
+  - key: "DOMAIN"
+    value: "[CI_CD_DOMAIN]"
   - key: "SMTP_HOST"
     value: "172.17.0.1"
   - key: "SMTP_PORT"
