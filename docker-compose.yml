@@ -4,18 +4,24 @@ services:
   zitadel:
     restart: always
     image: ghcr.io/zitadel/zitadel:latest
-    command: 'start-from-init --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external'
+    command: 'start-from-init --steps /zitadel-init-steps.yaml --masterkey "${ZITADEL_MASTERKEY}" --tlsMode external'
     environment:
       - 'ZITADEL_DATABASE_COCKROACH_HOST=crdb'
       - 'ZITADEL_EXTERNALSECURE=true'
       - 'ZITADEL_EXTERNALDOMAIN=${DOMAIN}'
       - 'ZITADEL_EXTERNALPORT=443'
-      # - 'ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME=root'
-      # - 'ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD=Test1234#'
+      - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_HOST=${SMTP_HOST}:${SMTP_PORT}
+      - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_USER=
+      - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_PASSWORD=
+      - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_TLS=false
+      - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_FROM=${SMTP_FROM_EMAIL}
+      - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_FROMNAME=Zitadel
     depends_on:
       - crdb
     ports:
       - '172.17.0.1:8586:8080'
+    volumes:
+      - "./zitadel-init-steps.yaml:/example-zitadel-init-steps.yaml:ro"
 
   crdb:
     restart: always
