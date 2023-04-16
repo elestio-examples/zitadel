@@ -17,6 +17,7 @@ FirstInstance:
       PasswordChangeRequired: false
 EOT
 
-cat <<EOT > ./.env
+cat <<EOT >> ./.env
+
 ZITADEL_MASTERKEY=${ZITADEL_MASTERKEY}
 EOT
