@@ -4,7 +4,7 @@ services:
   zitadel:
     restart: always
     image: ghcr.io/zitadel/zitadel:latest
-    command: 'start-from-init --steps /zitadel-init-steps.yaml --masterkey "${ZITADEL_MASTERKEY}" --tlsMode external'
+    command: 'start-from-init --steps /example-zitadel-init-steps.yaml --masterkey "${ZITADEL_MASTERKEY}" --tlsMode external'
     environment:
       - 'ZITADEL_DATABASE_COCKROACH_HOST=crdb'
       - 'ZITADEL_EXTERNALSECURE=true'

@@ -1,10 +1,5 @@
 #set env vars
-#set -o allexport; source .env; set +o allexport;
-
-# apt install jq -y
-
-# mkdir -p ./data
-# chown -R 1000:1000 ./data
+set -o allexport; source .env; set +o allexport;
 
 ZITADEL_MASTERKEY="$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32)"
 
@@ -13,7 +8,7 @@ FirstInstance:
   Org:
     Human:
       Username: 'root'
-      Password: '${ADMIN_PASSWORD}'
+      Password: '$ADMIN_PASSWORD'
       PasswordChangeRequired: false
 EOT
 
