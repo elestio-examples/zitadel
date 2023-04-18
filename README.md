@@ -10,7 +10,7 @@ Deploy Zitadel server with CI/CD on Elestio
 
 # Once deployed ...
 
-You can can open Zitadel UI here:
+You can open Zitadel UI here:
 
     URL: https://[CI_CD_DOMAIN]
     email: root@zitadel.[CI_CD_DOMAIN]
