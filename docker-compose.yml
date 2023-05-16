@@ -3,7 +3,7 @@ version: '3.8'
 services:
   zitadel:
     restart: always
-    image: ghcr.io/zitadel/zitadel:latest
+    image: ghcr.io/zitadel/zitadel:${SOFTWARE_VERSION_TAG}
     command: 'start-from-init --steps /example-zitadel-init-steps.yaml --masterkey "${ZITADEL_MASTERKEY}" --tlsMode external'
     environment:
       - 'ZITADEL_DATABASE_COCKROACH_HOST=crdb'
