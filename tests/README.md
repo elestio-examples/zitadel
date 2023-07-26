@@ -12,7 +12,7 @@ A better community platform for the modern web.
 
 [Zitadel](https://zitadel.com/) Zitadel is a cloud-native Identity & Access Management platform built for the cloud era.
 
-<img src="https://github.com/elestio-examples/zitadel/raw/main/Zitadel.jpg" alt="zitadel" width="800">
+<img src="https://github.com/elestio-examples/zitadel/raw/main/Zitadel.png" alt="zitadel" width="800">
 
 Deploy a <a target="_blank" href="https://elest.io/open-source/umami">fully managed Zitadel</a> on <a target="_blank" href="https://elest.io/">elest.io</a> Zitadel gives developers all they need to integrate identity management. Easy as pie. Ready when you are — because serverless. At yours or ours — because of the open source.
 
