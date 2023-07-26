@@ -56,10 +56,10 @@ Here are some example snippets to help you get started creating a container.
                     image: 'elestio4test/zitadel:${SOFTWARE_VERSION_TAG}'
                     command: 'start-from-init --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode disabled'
                     environment:
-                    - 'ZITADEL_DATABASE_COCKROACH_HOST=crdb'
-                    - 'ZITADEL_EXTERNALSECURE=true'
-                    - 'ZITADEL_EXTERNALDOMAIN=${DOMAIN}'
-                    - 'ZITADEL_EXTERNALPORT=443'
+                    - ZITADEL_DATABASE_COCKROACH_HOST=crdb
+                    - ZITADEL_EXTERNALSECURE=true
+                    - ZITADEL_EXTERNALDOMAIN=${DOMAIN}
+                    - ZITADEL_EXTERNALPORT=443
                     - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_HOST=${SMTP_HOST}:${SMTP_PORT}
                     - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_USER=
                     - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_PASSWORD=
