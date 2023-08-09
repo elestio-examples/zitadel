@@ -38,7 +38,6 @@ Copy the .env file from tests folder to the project directory
 
 Edit the .env file with your own values.
 
-
 Run the project with the following command
 
     docker-compose up -d
@@ -56,10 +55,10 @@ Here are some example snippets to help you get started creating a container.
                     image: 'elestio4test/zitadel:${SOFTWARE_VERSION_TAG}'
                     command: 'start-from-init --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode disabled'
                     environment:
-                    - ZITADEL_DATABASE_COCKROACH_HOST=crdb
-                    - ZITADEL_EXTERNALSECURE=true
-                    - ZITADEL_EXTERNALDOMAIN=${DOMAIN}
-                    - ZITADEL_EXTERNALPORT=443
+                    - ZITADEL_DATABASE_COCKROACH_HOST=${ZITADEL_DATABASE_COCKROACH_HOST}
+                    - ZITADEL_EXTERNALSECURE=${ZITADEL_EXTERNALSECURE}
+                    - ZITADEL_EXTERNALDOMAIN=${ZITADEL_EXTERNALDOMAIN}
+                    - ZITADEL_EXTERNALPORT=${ZITADEL_EXTERNALPORT}
                     - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_HOST=${SMTP_HOST}:${SMTP_PORT}
                     - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_USER=
                     - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_PASSWORD=
@@ -73,7 +72,7 @@ Here are some example snippets to help you get started creating a container.
 
                 crdb:
                     restart: 'always'
-                    image: 'cockroachdb/cockroach:v22.2.2'
+                    image: 'cockroachdb/cockroach:${COCKROACH_VERSION_TAG}'
                     command: 'start-single-node --insecure'
                     ports:
                     - '172.17.0.1:9090:8080'
@@ -81,14 +80,17 @@ Here are some example snippets to help you get started creating a container.
 
 ### Environment variables
 
-|       Variable       | Value (example) |
-| :------------------: | :-------------: |
-| SOFTWARE_VERSION_TAG | latest          |
-| DOMAIN               | your Domain     |
-| SMTP_HOST            | your Host       |
-| SMTP_PORT            | 25              |
-|SMTP_FROM_EMAIL       | your Mail ID    |
-
+|            Variable             | Value (example) |
+| :-----------------------------: | :-------------: |
+|      SOFTWARE_VERSION_TAG       |     latest      |
+| ZITADEL_DATABASE_COCKROACH_HOST |   cr-db-name    |
+|     ZITADEL_EXTERNALSECURE      |      true       |
+|     ZITADEL_EXTERNALDOMAIN      |   your-domain   |
+|      ZITADEL_EXTERNALPORT       |       80        |
+|            SMTP_HOST            |    your-host    |
+|            SMTP_PORT            |       25        |
+|         SMTP_FROM_EMAIL         |  test@mail.com  |
+|      COCKROACH_VERSION_TAG      |     latest      |
 
 # Maintenance
 
