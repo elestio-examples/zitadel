@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   zitadel:
@@ -6,10 +6,10 @@ services:
     image: ghcr.io/zitadel/zitadel:${SOFTWARE_VERSION_TAG}
     command: 'start-from-init --steps /example-zitadel-init-steps.yaml --masterkey "${ZITADEL_MASTERKEY}" --tlsMode external'
     environment:
-      - 'ZITADEL_DATABASE_COCKROACH_HOST=crdb'
-      - 'ZITADEL_EXTERNALSECURE=true'
-      - 'ZITADEL_EXTERNALDOMAIN=${DOMAIN}'
-      - 'ZITADEL_EXTERNALPORT=443'
+      - "ZITADEL_DATABASE_COCKROACH_HOST=crdb"
+      - "ZITADEL_EXTERNALSECURE=true"
+      - "ZITADEL_EXTERNALDOMAIN=${DOMAIN}"
+      - "ZITADEL_EXTERNALPORT=443"
       - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_HOST=${SMTP_HOST}:${SMTP_PORT}
       - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_USER=
       - ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_PASSWORD=
@@ -19,16 +19,16 @@ services:
     depends_on:
       - crdb
     ports:
-      - '172.17.0.1:8586:8080'
+      - "172.17.0.1:8586:8080"
     volumes:
       - "./zitadel-init-steps.yaml:/example-zitadel-init-steps.yaml:ro"
 
   crdb:
     restart: always
-    image: 'cockroachdb/cockroach:v22.2.2'
-    command: 'start-single-node --insecure'
+    image: "cockroachdb/cockroach:latest"
+    command: "start-single-node --insecure"
     ports:
-      - '172.17.0.1:9090:8080'
-      - '172.17.0.1:26257:26257'
+      - "172.17.0.1:9090:8080"
+      - "172.17.0.1:26257:26257"
     volumes:
-      - './data:/cockroach/cockroach-data:rw'
+      - "./data:/cockroach/cockroach-data:rw"
