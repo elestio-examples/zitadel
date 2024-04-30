@@ -20,6 +20,7 @@ services:
       - crdb
     ports:
       - "172.17.0.1:8586:8080"
+      - "8587:8080"
     volumes:
       - "./zitadel-init-steps.yaml:/example-zitadel-init-steps.yaml:ro"
 
