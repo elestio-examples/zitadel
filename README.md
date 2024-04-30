@@ -21,7 +21,7 @@ GRPC API is available over:
     
     [CI_CD_DOMAIN]:8443
 
-example query:
+example GRPC query:
     
      docker run fullstorydev/grpcurl [CI_CD_DOMAIN]:8443 list
     
