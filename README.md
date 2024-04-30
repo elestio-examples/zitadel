@@ -15,3 +15,13 @@ You can open Zitadel UI here:
     URL: https://[CI_CD_DOMAIN]
     email: root@zitadel.[CI_CD_DOMAIN]
     password: [ADMIN_PASSWORD]
+
+
+GRPC API is available over:
+    
+    [CI_CD_DOMAIN]:8443
+
+example query:
+    
+     docker run fullstorydev/grpcurl [CI_CD_DOMAIN]:8443 list
+    
