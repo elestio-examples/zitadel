@@ -8,27 +8,9 @@ ports:
     path: "/"
     isAuth: false
   - protocol: "HTTPS"
-    targetProtocol: "GRPC"
-    listeningPort: "8443"
-    targetPort: "8586"
-    targetIP: "172.17.0.1"
-    public: true
-    path: "/"
-    isAuth: false
-  - protocol: "HTTPS"
     targetProtocol: "HTTP"
-    listeningPort: "444"
-    targetPort: "9090"
-    targetIP: "172.17.0.1"
-    public: true
-    path: "/"
-    isAuth: true
-    login: "root"
-    password: "random_password"
-  - protocol: "HTTPS"
-    targetProtocol: "HTTP"
-    listeningPort: "445"
-    targetPort: "26257"
+    listeningPort: "23456"
+    targetPort: "29521"
     targetIP: "172.17.0.1"
     public: true
     path: "/"
@@ -70,4 +52,8 @@ webUI:
   - url: "https://[CI_CD_DOMAIN]"
     label: "Zitadel Admin"
     login: "root@zitadel.[CI_CD_DOMAIN]"
+    password: "[ADMIN_PASSWORD]"
+  - url: "https://[CI_CD_DOMAIN]:23456/"
+    label: "PgAdmin"
+    login: "[ADMIN_EMAIL]"
     password: "[ADMIN_PASSWORD]"

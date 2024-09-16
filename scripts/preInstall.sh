@@ -16,3 +16,21 @@ cat <<EOT >> ./.env
 
 ZITADEL_MASTERKEY=${ZITADEL_MASTERKEY}
 EOT
+
+
+cat <<EOT > ./servers.json
+{
+    "Servers": {
+        "1": {
+            "Name": "local",
+            "Group": "Servers",
+            "Host": "172.17.0.1",
+            "Port": 25345,
+            "MaintenanceDB": "postgres",
+            "SSLMode": "prefer",
+            "Username": "postgres",
+            "PassFile": "/pgpass"
+        }
+    }
+}
+EOT

@@ -34,12 +34,14 @@ services:
       - "./zitadel-init-steps.yaml:/example-zitadel-init-steps.yaml:ro"
 
   db:
+    image: elestio/postgres:16
     restart: 'always'
-    image: postgres:16-alpine
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=$ADMIN_PASSWORD
       - POSTGRES_DB=zitadel
+    ports:
+      - 172.17.0.1:25345:5432
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -48,3 +50,18 @@ services:
       timeout: '30s'
       retries: 5
       start_period: '20s'
+
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${ADMIN_PASSWORD}
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - "172.17.0.1:29521:8080"
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+    depends_on:
+      - db
