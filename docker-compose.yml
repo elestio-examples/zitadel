@@ -53,7 +53,7 @@ services:
 
 
   pgadmin:
-    image: dpage/pgadmin4:latest
+    image: elestio/pgadmin:latest
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: ${ADMIN_EMAIL}
