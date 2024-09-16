@@ -17,7 +17,14 @@ You can open Zitadel UI here:
     password: [ADMIN_PASSWORD]
 
 
+GRPC API is available over:
+    
+    [CI_CD_DOMAIN]:8443
 
+example GRPC query:
+    
+     docker run fullstorydev/grpcurl [CI_CD_DOMAIN]:8443 list
+    
 You can open PgAdmin here:
     
     URL: [CI_CD_DOMAIN]:23456
