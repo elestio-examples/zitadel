@@ -25,7 +25,7 @@ example GRPC query:
     
      docker run fullstorydev/grpcurl [CI_CD_DOMAIN]:8443 list
     
-You can open PgAdmin here:
+You can access PgAdmin by:
     
     URL: [CI_CD_DOMAIN]:23456
     email: [ADMIN_EMAIL]
